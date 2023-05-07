@@ -13,8 +13,6 @@ git clone https://github.com/Jdka1/Kanji-Recognition.git
 cd Kanji-Recognition
 ```
 
-[//]: # how to predict on characters both using whiteboard and computer drawings
-
 ## 🤝 Contributing
 
 Contributions to the **Kanji-Recognition** project are welcome and encouraged! If you have ideas for improvements or bug fixes, please feel free to submit a pull request.
