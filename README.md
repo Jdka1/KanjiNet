@@ -1,5 +1,3 @@
-Sure, I'd be happy to help you write a stylized README.md file for the "Kanji-Recognition" project on GitHub! Here's an example that you can customize and modify as needed:
-
 # 👀 Kanji-Recognition Project 👀
 
 The **Kanji-Recognition** project is an open-source machine learning project that aims to recognize handwritten Japanese kanji characters using deep learning algorithms.
