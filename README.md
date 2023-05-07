@@ -4,7 +4,7 @@ This is an open-source machine learning project that aims to recognize handwritt
 
 ## 📝 Overview
 
-The project uses a convolutional neural network (CNN) implemented in **PyTorch** to classify handwritten kanji characters. The dataset used in the project consists of over 7,000 images of handwritten kanji characters, which are preprocessed and augmented to improve the accuracy of the recognition model.
+The project uses a CNN implemented in **PyTorch** to classify handwritten kanji characters. The dataset used in the project consists of around 7,000 images of handwritten kanji characters with one sample each which are 64x64.
 
 ## 🚀 Getting Started
 
