@@ -8,12 +8,12 @@ The project uses a CNN implemented in **PyTorch** to classify handwritten kanji 
 
 ## 🚀 Getting Started
 
-To get started with the **Kanji-Recognition** project, you will need to clone the repository and install the required dependencies:
+To get started with the **Kanji-Recognition** project, you will need to clone the repository and install pytorch:
 
 ```sh
 git clone https://github.com/Jdka1/Kanji-Recognition.git
 cd Kanji-Recognition
-pip install -r requirements.txt
+pip install torch
 ```
 
 ## 📊 Training the Model
