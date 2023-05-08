@@ -15,7 +15,7 @@ cd Kanji-Recognition
 
 ## 🤝 Contributing
 
-Contributions to the **Kanji-Recognition** project are welcome and encouraged! If you have ideas for improvements or bug fixes, please feel free to submit a pull request.
+If you have ideas for improvements please feel free to submit a pull request, any changes are welcome!
 
 ## 📜 License
 
