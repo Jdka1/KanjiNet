@@ -7,7 +7,8 @@ import os
 from PIL import Image, ImageDraw, ImageFont
 from Machine_Learning.architecture import Network
 
-
+# !!!
+# Make point orientation algorithm
 
 class Kanji_Guesser:
     def __init__(self, num_samples):
@@ -29,15 +30,15 @@ class Kanji_Guesser:
         return kanji_dict
 
 
-kanji_guesser = Kanji_Guesser(num_samples=100)
+kanji_guesser = Kanji_Guesser(num_samples=10)
 
 
 
-cap = cv2.VideoCapture(2)
+cap = cv2.VideoCapture(0)
 
 color_finder = ColorFinder(trackBar=False)
-mask_vals = {'hmin': 164, 'smin': 101, 'vmin': 215, 'hmax': 179, 'smax': 255, 'vmax': 255}
-
+# mask_vals = {'hmin': 164, 'smin': 101, 'vmin': 215, 'hmax': 179, 'smax': 255, 'vmax': 255} # Home
+mask_vals = {'hmin': 171, 'smin': 132, 'vmin': 100, 'hmax': 179, 'smax': 255, 'vmax': 255} # School
 
 if not cap.isOpened():
     print("Cannot open camera")
@@ -50,6 +51,7 @@ while True:
         continue
 
     masked, mask = color_finder.update(frame, mask_vals)
+    # cv2.imshow('m', masked)
     ret, thresh1 = cv2.threshold(masked, 0, 255, cv2.THRESH_BINARY)
     eroded = cv2.erode(thresh1, (4,4), iterations=5)
     dilated = cv2.dilate(eroded, (4,4), iterations=15)
@@ -68,17 +70,18 @@ while True:
                 
         if len(contours) == 4:
             pts1 = np.float32(centers)
-            pts1[[0, 1], :] = pts1[[1, 0], :]
-            pts1[[2, 3], :] = pts1[[3, 2], :]
+            # pts1[[0, 1], :] = pts1[[1, 0], :]
+            # pts1[[2, 3], :] = pts1[[3, 2], :]
+            # print
             
             whiteboard_aspect_ratio = (4,3)
             whiteboard_scale_factor = 200
             
             pts2 = np.float32([
-                            [0,whiteboard_aspect_ratio[1]*whiteboard_scale_factor],
-                            [0,0],
                             [whiteboard_aspect_ratio[0]*whiteboard_scale_factor,whiteboard_aspect_ratio[1]*whiteboard_scale_factor],
+                            [0,whiteboard_aspect_ratio[1]*whiteboard_scale_factor],
                             [whiteboard_aspect_ratio[0]*whiteboard_scale_factor,0],
+                            [0,0],
             ])
             matrix = cv2.getPerspectiveTransform(pts1, pts2)
             warped = cv2.warpPerspective(frame, matrix, (whiteboard_aspect_ratio[0]*whiteboard_scale_factor,whiteboard_aspect_ratio[1]*whiteboard_scale_factor))
@@ -90,7 +93,7 @@ while True:
             cropped = whiteboard[margin:whiteboard.shape[0]-margin, margin:whiteboard.shape[1]-margin]
             
             gray = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
-            ret, thresh = cv2.threshold(gray, 180, 255, cv2.THRESH_BINARY)
+            ret, thresh = cv2.threshold(gray, 145, 255, cv2.THRESH_BINARY)
             thresh = cv2.bitwise_not(thresh)
             
             kanji_contours, kanji_hierarchy = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
@@ -101,17 +104,18 @@ while True:
                 w = max(list(map(lambda x: x[0] + x[2], rects)))
                 h = max(list(map(lambda x: x[1] + x[3], rects)))
                 
-                char_margin = int((w - x) / 7)
-                character = thresh[y-char_margin:h+char_margin, x-char_margin:w+char_margin]
+                character = thresh[y:h, x:w]
                 character = cv2.resize(character, (64, 64), interpolation=cv2.INTER_AREA)
-                # character = cv2.dilate(character, (5,1), iterations=1)
+                character = np.pad(character, 10)
+                character = cv2.resize(character, (64, 64), interpolation=cv2.INTER_AREA)
                 
                 tensor_char = torch.FloatTensor(character).unsqueeze(0).unsqueeze(0)
                 tensor_char = tensor_char.apply_(lambda x: 1 if x > 100 else -1)
                 output = kanji_guesser.predict(tensor_char)
                 prediction = kanji_guesser.parse_prediction(output, top=5)
                 
-            except:
+            except Exception as e:
+                print(e)
                 pass
             
             try:
@@ -119,9 +123,9 @@ while True:
             except:
                 pass
             
-        if centers: 
-            for c in centers:
-                frame = cv2.circle(frame, c, 10, (255,0,0), -1)
+        if centers and len(centers) == 4: 
+            for c, color in zip(centers, [(255,0,0), (0,255,0), (0,0,255), (0,0,0)]):
+                frame = cv2.circle(frame, c, 10, color, -1)
         
         try:
             img_pil = Image.fromarray(frame)
@@ -136,8 +140,7 @@ while True:
         except NameError:
             print('no prediction')
             
-        cv2.imshow('frame', frame)
-    
+    cv2.imshow('frame', frame)
 
     if cv2.waitKey(1) == ord('q'):
         break
