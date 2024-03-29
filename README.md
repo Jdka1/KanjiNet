@@ -1,4 +1,4 @@
-# 👀 Kanji-Recognition Project 👀
+# Kanji-Recognition Project
 
 This is an open-source machine learning project that aims to recognize handwritten Japanese kanji characters using ML.
 
