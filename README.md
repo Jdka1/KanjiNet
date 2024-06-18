@@ -2,6 +2,9 @@
 
 This is an open-source machine learning project that aims to recognize handwritten Japanese kanji characters using ML.
 
+![](IMG_4295.JPG)
+
+
 ## 📝 Overview
 
 The project uses a CNN implemented in **PyTorch** to classify handwritten kanji characters. The dataset used in the project consists of around 7,000 images of handwritten kanji characters with one sample each which are 64x64.
