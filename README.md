@@ -5,9 +5,9 @@ This is an open-source machine learning project that aims to recognize handwritt
 ![](IMG_4295.JPG)
 
 
-## 📝 Overview
+## Procedure
 
-The project uses a CNN implemented in **PyTorch** to classify handwritten kanji characters. The dataset used in the project consists of around 7,000 images of handwritten kanji characters with one sample each which are 64x64.
+The [dataset](https://github.com/KanjiVG/kanjivg/releases) used in the project consists of 7,000 images of handwritten kanji characters with one sample each which are 64x64.
 
 ## 🚀 Getting Started
 
