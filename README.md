@@ -11,7 +11,7 @@ Dataset is located at `Machine_Learning/data`. Each file is a PNG of the charact
 
 ### OCR Model
 
-Model architecture is located at `Machine_Learning/architecture.py`. To import the model and weights in torch run the following inside this cloned repo.
+Model architecture is located at `Machine_Learning/architecture.py`. To import the model and weights in PyTorch run the following inside this cloned repo.
 
 ```python
 import torch
@@ -22,11 +22,12 @@ model.load_state_dict(torch.load('Machine_Learning/weights.pth')
 ```
 
 
-
-
 ### Next Steps and Contributing
 
-If you have ideas for improvements please feel free to submit a pull request, any changes are welcome!
+If you have improvements for data processing, training, or architecture please feel free to submit a pull request, any changes are welcome!
+
+Next steps:
+- [ ] Add segmentation and RNN to model for multi-character prediction
 
 ### License
 
