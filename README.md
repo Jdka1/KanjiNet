@@ -27,7 +27,7 @@ model.load_state_dict(torch.load('Machine_Learning/weights.pth')
 If you have improvements for data processing, training, or architecture please feel free to submit a pull request, any changes are welcome!
 
 Next steps:
-- [x] Apply random perspective transformation to training images for unconstrained recognition of distorted characters 
+- [x] Apply random perspective transformation to training images for upsampling and unconstrained recognition of distorted characters 
 - [ ] Add segmentation and RNN to model for multi-character prediction
 
 ## License
