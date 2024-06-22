@@ -6,7 +6,7 @@ Open-source research project developing a CNN OCR (optical character recognition
 
 
 ### Dataset
-`Machine_Learning/data`
+Dataset is located at `Machine_Learning/data`. Each file is a png of the character in its filename.
 
 
 ## Procedure
