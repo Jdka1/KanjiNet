@@ -1,8 +1,12 @@
 # Handwritten OCR for Kanji Characters
 
-Open-source research project developing a CNN OCR (optical character recognition) model that can identify handwritten Kanji and other Japanese characters.
+Open-source research project developing a CNN OCR (optical character recognition) dataset and model that can identify handwritten Kanji and other Japanese characters.
 
 ![Live use](IMG_4295.JPG)
+
+
+### Dataset
+`Machine_Learning/data`
 
 
 ## Procedure
