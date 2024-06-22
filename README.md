@@ -6,24 +6,28 @@ Open-source research project developing a CNN OCR (optical character recognition
 
 
 ### Dataset
-Dataset is located at `Machine_Learning/data`. Each file is a png of the character in its filename.
+Dataset is located at `Machine_Learning/data`. Each file is a PNG of the character in its filename. The original SVG [dataset](https://github.com/KanjiVG/kanjivg/releases) that was processed contains 7,000 images of handwritten kanji characters.
 
 
-## Procedure
+### OCR Model
 
-The [dataset](https://github.com/KanjiVG/kanjivg/releases) used in the project consists of 7,000 images of handwritten kanji characters with one sample each which are 64x64.
+Model architecture is located at `Machine_Learning/architecture.py`. To import the model and weights in torch run the following inside this cloned repo.
 
-## 🚀 Getting Started
+```python
+import torch
+from Machine_Learning.architecture import KanjiNet
 
-```sh
-git clone https://github.com/Jdka1/Kanji-Recognition.git
-cd Kanji-Recognition
+model = KanjiNet()
+model.load_state_dict(torch.load('Machine_Learning/weights.pth')
 ```
 
-## 🤝 Contributing
+
+
+
+### Next Steps and Contributing
 
 If you have ideas for improvements please feel free to submit a pull request, any changes are welcome!
 
-## 📜 License
+### License
 
 The **Kanji-Recognition** project is open-source and is licensed under the [MIT License](https://github.com/Jdka1/Kanji-Recognition/blob/main/LICENSE).
