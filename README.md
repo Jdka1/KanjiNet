@@ -1,8 +1,8 @@
-# Kanji-Recognition Project
+# Handwritten OCR for Kanji Characters
 
-This is an open-source machine learning project that aims to recognize handwritten Japanese kanji characters using ML.
+Open-source research project developing a CNN OCR (optical character recognition) model that can identify handwritten Kanji and other Japanese characters.
 
-![](IMG_4295.JPG)
+![Live use](IMG_4295.JPG)
 
 
 ## Procedure
