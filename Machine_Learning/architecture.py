@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-class Network(nn.Module):
+class KanjiNet(nn.Module):
     def __init__(self, len_kanji_dict):
         super().__init__()
         # ADD RELU
